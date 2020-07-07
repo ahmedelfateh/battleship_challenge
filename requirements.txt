@@ -1,0 +1,12 @@
+behave-restful
+bolt-ta
+conttest
+flask
+nose
+
+#added
+Flask-SQLAlchemy
+black
+pylint
+ipython
+httpie

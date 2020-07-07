@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Battleship Game</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Battleship Game</h1>
+    {% if games|length < 1 %}
+    <h3 style="text-align: center">There are no games. Create one!</h3>
+    <h4>Open Terminal</h4>
+    <p>1- pyenv virtualenv 3.8.1 flask</p>
+    <p>2- pyenv activate flask</p>
+    <p>3- cd battleship_challenge</p>
+    <p>4- pip install -r requirements.txt</p>
+    <p>5- ipython</p>
+    <p>6- from battleship.model import db</p>
+    <p>7- db.create.all()</p>
+
+    <h5>Create New Game</h5>
+    <p>echo '{ "ships": [ { "x": 2, "y": 1, "size": 4, "direction": "H" }, { "x": 7, "y": 4, "size": 2, "direction": "V" }, { "x": 3, "y": 5, "size": 2, "direction": "V" }, { "x": 6, "y": 8, "size": 1, "direction": "H" } ] }'| http POST http://127.0.0.1:5000/battleship</p>
+    <h5>Delete the Game</h5>
+    <p>http DELETE http://127.0.0.1:5000/battleship</p>
+    <h2>Update the Game</h2>
+    <p>Not here yet, but it will be</p>
+    {% else %}
+    <table>
+        <tr>
+            <th>Game ID</th>
+            <th>Ships Data</th>
+        </tr>
+        {% for game in games %}
+            <tr>
+                <td>{{ game.id }}</td>
+                <td>{{ game.data }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
